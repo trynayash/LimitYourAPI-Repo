@@ -8,17 +8,16 @@ Thank you for your interest in contributing to LimitYourAPI! We welcome contribu
 
 To contribute to the client SDK modules:
 
-### 1. Clone the SDK Repositories
-- Node.js SDK: `https://github.com/trynayash/limityourapi-node`
-- Python SDK: `https://github.com/trynayash/limityourapi-python`
-- Go SDK: `https://github.com/trynayash/limityourapi-go`
+### 1. Clone the Developer Repository
+```bash
+git clone https://github.com/trynayash/LimityourAPI-Repo.git
+cd LimityourAPI-Repo
+```
 
 ### 2. Node SDK Setup
 ```bash
-git clone https://github.com/trynayash/limityourapi-node.git
-cd limityourapi-node
+cd sdk
 npm install
-npm test
 ```
 
 ---

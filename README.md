@@ -4,9 +4,9 @@
   <p><strong>Production-grade distributed rate limiting infrastructure for developers.</strong></p>
 
   <p>
-    <a href="https://github.com/trynayash/limityourapi/actions"><img src="https://img.shields.io/badge/build-passing-brightgreen?style=flat-square" alt="Build Status" /></a>
+    <a href="https://github.com/trynayash/LimityourAPI-Repo/actions"><img src="https://img.shields.io/badge/build-passing-brightgreen?style=flat-square" alt="Build Status" /></a>
     <a href="https://www.npmjs.com/package/limityourapi"><img src="https://img.shields.io/npm/v/limityourapi.svg?style=flat-square" alt="npm version" /></a>
-    <a href="https://github.com/trynayash/limityourapi/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-Apache_2.0-blue.svg?style=flat-square" alt="License" /></a>
+    <a href="https://github.com/trynayash/LimityourAPI-Repo/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-Apache_2.0-blue.svg?style=flat-square" alt="License" /></a>
     <a href="https://golang.org"><img src="https://img.shields.io/badge/Go-1.21+-00ADD8?style=flat-square&logo=go" alt="Go Version" /></a>
     <a href="https://react.dev"><img src="https://img.shields.io/badge/Frontend-React%20%2B%20Vite-61DAFB?style=flat-square" alt="React Frontend" /></a>
   </p>
