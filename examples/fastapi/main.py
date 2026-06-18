@@ -1,5 +1,5 @@
 import os
-from fastapi import FastAPI, Request, HTTPException
+from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
 from limityourapi import LimitYourAPI
 
@@ -8,12 +8,10 @@ limiter = LimitYourAPI(api_key=os.getenv("LIMIT_YOUR_API_KEY", "your_api_key_her
 
 @app.middleware("http")
 async def rate_limit_middleware(request: Request, call_next):
-    # Retrieve client identity key
-    client_ip = request.client.host if request.client else "127.0.0.1"
     route = request.url.path
     
-    # Evaluate decision asynchronously
-    result = limiter.check(endpoint=route, identifier=client_ip)
+    # Evaluate decision
+    result = limiter.check(endpoint=route)
     
     if not result.allowed:
         return JSONResponse(

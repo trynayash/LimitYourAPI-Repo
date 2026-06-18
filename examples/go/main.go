@@ -22,10 +22,9 @@ func main() {
 
 	// Fiber middleware definition
 	app.Use(func(c *fiber.Ctx) error {
-		ip := c.IP()
 		route := c.Path()
 
-		decision, err := client.Check(context.Background(), route, &ip, nil)
+		decision, err := client.Check(context.Background(), route, nil, nil)
 		if err != nil {
 			log.Println("Rate limiter connection error:", err)
 			return c.Next() // Fail-open

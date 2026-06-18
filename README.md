@@ -75,27 +75,32 @@ npm install limityourapi
 
 #### TypeScript / Type-Safe Config
 ```typescript
-import { LimitYourAPIClient, LimitOptions } from 'limityourapi';
+import { LimitYourAPIClient, LimitYourAPIOptions } from 'limityourapi';
 
-const config: LimitOptions = {
+const config: LimitYourAPIOptions = {
+  baseUrl: 'https://api.v2.limityourapi.tech',
   apiKey: process.env.LIMIT_YOUR_API_KEY || '',
   timeout: 500, // 500ms socket timeout budget
   failOpen: true
 };
 
 const limiter = new LimitYourAPIClient(config);
-const decision = await limiter.check({ key: 'user_123', route: 'GET /items' });
+const decision = await limiter.check({ endpoint: '/v1/items' });
 ```
 
 #### Express Middleware (JavaScript)
 ```javascript
 import { LimitYourAPIClient } from 'limityourapi';
-const limiter = new LimitYourAPIClient({ apiKey: process.env.LIMIT_YOUR_API_KEY });
+const limiter = new LimitYourAPIClient({
+  baseUrl: 'https://api.v2.limityourapi.tech',
+  apiKey: process.env.LIMIT_YOUR_API_KEY
+});
 
 app.use('/api', async (req, res, next) => {
-  const result = await limiter.check({ key: req.ip, route: req.path });
+  const result = await limiter.check({ endpoint: req.path });
   res.setHeader('X-RateLimit-Limit', result.limit);
   res.setHeader('X-RateLimit-Remaining', result.remaining);
+  res.setHeader('X-RateLimit-Reset', result.resetIn);
   
   if (!result.allowed) {
     res.setHeader('Retry-After', result.retryAfter);
@@ -115,7 +120,7 @@ pip install limityourapi
 from limityourapi import LimitYourAPI
 
 limiter = LimitYourAPI(api_key="your_api_key", timeout=2.0)
-decision = limiter.check(endpoint="/profile", identifier="user_456")
+decision = limiter.check(endpoint="/profile")
 ```
 
 ### 3. Go SDK

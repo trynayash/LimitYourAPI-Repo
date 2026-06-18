@@ -3,14 +3,14 @@ import type { NextRequest } from 'next/server';
 import { LimitYourAPIClient } from 'limityourapi';
 
 const limiter = new LimitYourAPIClient({
+  baseUrl: 'https://api.v2.limityourapi.tech',
   apiKey: process.env.LIMIT_YOUR_API_KEY || 'your_api_key_here'
 });
 
 export async function middleware(request: NextRequest) {
-  const ip = request.ip || '127.0.0.1';
   const path = request.nextUrl.pathname;
   
-  const result = await limiter.check({ key: ip, route: path });
+  const result = await limiter.check({ endpoint: path });
   
   if (!result.allowed) {
     return new NextResponse(
